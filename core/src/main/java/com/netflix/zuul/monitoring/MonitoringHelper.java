@@ -39,10 +39,8 @@ public class MonitoringHelper {
     }
 
     private static final class TracerImpl implements Tracer {
-        @Override
         public void setName(String name) {}
 
-        @Override
         public void stopAndLog() {}
     }
 

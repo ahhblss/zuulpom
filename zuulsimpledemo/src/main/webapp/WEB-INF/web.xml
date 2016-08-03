@@ -4,10 +4,12 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          version="2.5">
 
+    <!--a ServletContextListener that initializes the app-->
   <listener>
     <listener-class>com.netflix.zuul.StartServer</listener-class>
   </listener>
 
+    <!--a servlet that matches all requests. It performs the core Zuul Filter flow of executing pre, routing, and post Filters-->
   <servlet>
     <servlet-name>ZuulServlet</servlet-name>
     <servlet-class>com.netflix.zuul.http.ZuulServlet</servlet-class>
@@ -18,6 +20,7 @@
     <url-pattern>/*</url-pattern>
   </servlet-mapping>
 
+  <!--a servlet filter matching all requests. It cleans up the RequestContext after each request, ensuring isolation-->
   <filter>
     <filter-name>ContextLifecycleFilter</filter-name>
     <filter-class>com.netflix.zuul.context.ContextLifecycleFilter</filter-class>
